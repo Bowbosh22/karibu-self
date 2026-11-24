@@ -300,6 +300,80 @@ const SECTIONS = {
 };
 /* ===================================================================== */
 
+/* =====================================================================
+   GOOGLE SHEET EN DIRECT
+   Colle ici le lien CSV de la feuille publiée (Fichier > Partager >
+   Publier sur le web > format CSV). Laisse vide pour utiliser
+   uniquement la carte ci-dessus.
+   ===================================================================== */
+const SHEET_CSV_URL = "";
+
+const norm = (s) => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+function parseCSV(t){
+  const rows = []; let row = [], cur = "", q = false;
+  t = String(t).replace(/^\uFEFF/, "");
+  for (let i = 0; i < t.length; i++){
+    const c = t[i];
+    if (q){
+      if (c === '"'){ if (t[i+1] === '"'){ cur += '"'; i++; } else q = false; }
+      else cur += c;
+    } else if (c === '"') q = true;
+    else if (c === ","){ row.push(cur); cur = ""; }
+    else if (c === "\n" || c === "\r"){
+      if (c === "\r" && t[i+1] === "\n") i++;
+      row.push(cur); cur = ""; if (row.some(x => x.trim() !== "")) rows.push(row); row = [];
+    } else cur += c;
+  }
+  row.push(cur); if (row.some(x => x.trim() !== "")) rows.push(row);
+  return rows;
+}
+function fmtPrice(v){
+  v = String(v == null ? "" : v).trim(); if (!v) return "";
+  const n = v.replace(/[\s\u00a0\u202f.,]/g, "");
+  return /^\d+$/.test(n) ? n.replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") : v;
+}
+const HIDE = ["non", "no", "0", "faux", "false", "epuise", "epuisee", "indisponible"];
+function applySheet(csv){
+  const rows = parseCSV(csv); if (rows.length < 2) return false;
+  const head = rows[0].map(norm), ix = (n) => head.indexOf(n);
+  const iC = ix("categorie"), iN = ix("plat"), iP = ix("prix");
+  const iD = ix("description"), iV = ix("prixverre"), iA = ix("dispo");
+  if (iC < 0 || iN < 0 || iP < 0) return false;
+  const by = {};
+  for (const r of rows.slice(1)){
+    const k = norm(r[iC]), n = (r[iN] || "").trim(); if (!k || !n) continue;
+    (by[k] = by[k] || []);
+    if (iA >= 0 && HIDE.includes(norm(r[iA]))) continue;
+    const d = { n, p: fmtPrice(r[iP]) };
+    if (iD >= 0 && (r[iD] || "").trim()) d.d = r[iD].trim();
+    if (iV >= 0) d.v = fmtPrice(r[iV]);
+    by[k].push(d);
+  }
+  let changed = false;
+  for (const S of Object.values(SECTIONS)) for (const c of S.cats){
+    const list = by[norm(c.label)] || by[norm(c.id)];
+    if (list){ c.dishes = list; changed = true; }
+  }
+  return changed;
+}
+let lastSheet = "";
+async function loadSheet(){
+  if (!SHEET_CSV_URL) return;
+  const key = "karibu-sheet-csv";
+  try { const c = localStorage.getItem(key); if (c && applySheet(c)){ lastSheet = c; route(true); } } catch(e){}
+  try {
+    const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 8000);
+    const url = SHEET_CSV_URL + (SHEET_CSV_URL.includes("?") ? "&" : "?") + "_=" + Math.floor(Date.now() / 60000);
+    const res = await fetch(url, { signal: ctl.signal, cache: "no-store" });
+    clearTimeout(t); if (!res.ok) return;
+    const txt = await res.text();
+    if (txt !== lastSheet && applySheet(txt)){
+      lastSheet = txt; route(true);
+      try { localStorage.setItem(key, txt); } catch(e){}
+    }
+  } catch(e){}
+}
+
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
@@ -314,17 +388,17 @@ const TABLE = (new URLSearchParams(location.search).get("table") || "").replace(
 $("#wa").href = `https://wa.me/${RESTO.whatsapp}?text=` + encodeURIComponent(TABLE ? `Bonjour Karibu, table ${TABLE} : je souhaite passer une commande.` : "Bonjour Karibu, je souhaite passer une commande.");
 if (TABLE) $("#info").insertAdjacentHTML("afterbegin", `<span class="tbl">Table ${TABLE}</span>`);
 
-function show(id, deep){
+function show(id, deep, keep){
   $("#siteback").hidden = id !== "v-home" || !!TABLE;
   ["v-home","v-cats","v-list"].forEach(v => { $("#"+v).hidden = v !== id; });
   $("#screen").classList.toggle("deep", !!deep);
-  window.scrollTo(0, 0);
+  if (!keep) window.scrollTo(0, 0);
 }
 
-function route(){
+function route(keep){
   const [sec, catId] = location.hash.replace("#","").split("/");
   const S = SECTIONS[sec];
-  if (!S) return show("v-home", false);
+  if (!S) return show("v-home", false, keep);
   const single = S.cats.length === 1;
 
   if (!catId && !single){
@@ -334,7 +408,7 @@ function route(){
         <i>${c.dishes.length} ${c.dishes.length > 1 ? "choix" : "choix"}</i>
         <small>${esc(S.label)}</small><b>${esc(c.label)}</b>
       </a>`).join("");
-    return show("v-cats", true);
+    return show("v-cats", true, keep);
   }
 
   const cat = S.cats.find(c => c.id === catId) || S.cats[0];
@@ -358,11 +432,12 @@ function route(){
       <div class="n"><b>${esc(d.n)}</b>${d.d ? `<span>${esc(d.d)}</span>` : ""}</div>
       <div class="p">${esc(d.p)}<small>FC</small></div>
     </li>`).join("");
-  show("v-list", true);
+  show("v-list", true, keep);
 }
 
-window.addEventListener("hashchange", route);
+window.addEventListener("hashchange", () => route());
 route();
+loadSheet();
 </script>
 </body>
 </html>
