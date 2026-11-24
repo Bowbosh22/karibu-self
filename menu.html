@@ -306,7 +306,7 @@ const SECTIONS = {
    Publier sur le web > format CSV). Laisse vide pour utiliser
    uniquement la carte ci-dessus.
    ===================================================================== */
-const SHEET_CSV_URL = "";
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vStQlalNGjvU_2t3t3lkdiwx_MPiMZYyzQqIcKa9N7f4TlzYB9LDAOrj4Z0xxmNMqlg7Bc-yO3DUOwR/pub?output=csv";
 
 const norm = (s) => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "");
 function parseCSV(t){
