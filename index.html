@@ -5,11 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Karibu — Restaurant & Lounge Bar à Brazzaville · Ouvert 24h/24</title>
 <meta name="description" content="Karibu, restaurant et lounge bar à Brazzaville, ouvert 24h/24. Poulet mayo, pizzas, cocktails et comedy club tous les vendredis. 92 Av. de l'Indépendance.">
+<link rel="canonical" href="https://karibuself.com/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:url" content="https://karibuself.com/">
+<meta property="og:site_name" content="Karibu Self">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://karibuself.com/og-karibu.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="logo-192.png">
+<link rel="apple-touch-icon" href="logo-192.png">
 <meta name="theme-color" content="#120d09">
 <meta property="og:type" content="restaurant">
 <meta property="og:title" content="Karibu — Restaurant & Lounge Bar à Brazzaville">
 <meta property="og:description" content="Ouvert 24h/24 · Poulet mayo · Cocktails · Comedy club tous les vendredis">
-<meta property="og:image" content="fond-karibu.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
@@ -18,10 +28,47 @@
 if (/[?&]table=/.test(location.search)) location.replace("menu.html" + location.search + location.hash);
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Restaurant","name":"Karibu","description":"Restaurant et lounge bar à Brazzaville, ouvert 24h/24.",
-"telephone":"+242068201220","address":{"@type":"PostalAddress","streetAddress":"92 Av. de l'Indépendance","addressLocality":"Brazzaville","addressCountry":"CG"},
-"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},
-"hasMenu":"menu.html","image":"fond-karibu.webp"}
+{
+"@context": "https://schema.org",
+"@type": "Restaurant",
+"@id": "https://karibuself.com/#restaurant",
+"name": "Karibu Self",
+"url": "https://karibuself.com/",
+"description": "Restaurant et lounge bar à Brazzaville, ouvert 24h/24. Poulet mayo, pizzas, cocktails et comedy club tous les vendredis.",
+"telephone": "+242068201220",
+"image": [
+"https://karibuself.com/og-karibu.jpg"
+],
+"logo": "https://karibuself.com/logo-192.png",
+"servesCuisine": [
+"Africaine",
+"Grillades",
+"Pizzas"
+],
+"hasMenu": "https://karibuself.com/menu.html",
+"acceptsReservations": "https://wa.me/242068201220",
+"hasMap": "https://www.google.com/maps/search/?api=1&query=Karibu+Self+92+Avenue+de+l%27Ind%C3%A9pendance+Brazzaville",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "92 Av. de l'Indépendance",
+"addressLocality": "Brazzaville",
+"addressCountry": "CG"
+},
+"openingHoursSpecification": {
+"@type": "OpeningHoursSpecification",
+"dayOfWeek": [
+"Monday",
+"Tuesday",
+"Wednesday",
+"Thursday",
+"Friday",
+"Saturday",
+"Sunday"
+],
+"opens": "00:00",
+"closes": "23:59"
+}
+}
 </script>
 <style>
 @font-face{font-family:'Passion One';src:url("passion-one.woff2") format("woff2");font-weight:400;font-display:swap}
@@ -154,6 +201,7 @@ footer a{color:var(--gold);font-weight:700}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -170,7 +218,7 @@ footer a{color:var(--gold);font-weight:700}
 <section class="hero" id="accueil">
   <div>
     <img class="logo" src="logo-karibu.webp" width="224" height="224" alt="Logo Karibu — Restaurant, Lounge Bar">
-    <h1>KARIBU</h1>
+    <h1>KARIBU<span class="sr"> Self — restaurant et lounge bar à Brazzaville</span></h1>
     <p class="tag">Restaurant · Lounge Bar</p>
     <p class="pitch">Bienvenue chez Karibu : à table le jour, en lounge la nuit, ouvert 24h/24 à Brazzaville.</p>
     <div class="pills">
