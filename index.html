@@ -235,6 +235,20 @@ footer a{color:var(--gold);font-weight:700}
 .rform .btn{width:100%;font-size:.8rem;padding:16px 24px}
 @media(min-width:640px){.resa .box{padding:30px 28px}.rform{grid-template-columns:1fr 1fr}}
 [hidden]{display:none!important}
+/*ADR*/.adr{background:var(--ink2)}.adr .lead{color:var(--mute);max-width:640px;margin-top:14px}
+.adr .cards{display:grid;gap:22px;margin-top:34px;grid-template-columns:1fr}
+.adr .card{border-radius:var(--r);overflow:hidden;background:#241a12;border:1px solid rgba(251,243,230,.12);display:flex;flex-direction:column}
+.adr .card.here{border-color:rgba(224,171,74,.55)}
+.adr .ph{position:relative;aspect-ratio:16/9;background-size:cover;background-position:center}
+.adr .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,13,9,.15),rgba(18,13,9,.75))}
+.adr .badge{position:absolute;z-index:2;top:14px;left:14px;font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:7px 12px;border-radius:999px;background:var(--gold);color:#241707}
+.adr .badge.other{background:rgba(18,13,9,.8);color:var(--gold);border:1px solid rgba(224,171,74,.6)}
+.adr .cb{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.adr .tg{font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.adr h3{font-family:'Passion One',sans-serif;font-weight:400;font-size:2.3rem;line-height:1;text-transform:uppercase}
+.adr .cb p{color:var(--mute);font-size:.95rem}.adr .addr{font-size:.86rem}
+.adr .act{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:10px}.adr .act .note{font-size:.8rem;color:var(--mute);padding:12px 0}
+@media(min-width:820px){.adr .cards{grid-template-columns:1fr 1fr;gap:28px}}
 </style>
 </head>
 <body>
@@ -242,7 +256,7 @@ footer a{color:var(--gold);font-weight:700}
 <header class="top" id="top">
   <a class="brand" href="#accueil"><img src="logo-karibu.webp" width="34" height="34" alt="">KARIBU</a>
   <nav aria-label="Navigation">
-    <a href="#ambiance">Ambiance</a><a href="#poulet-mayo">Signature</a><a href="#comedy">Comedy club</a><a href="#carte">La carte</a><a href="#reserver">Réserver</a><a href="#infos">Infos</a>
+    <a href="#ambiance">Ambiance</a><a href="#poulet-mayo">Signature</a><a href="#comedy">Comedy club</a><a href="#carte">La carte</a><a href="#reserver">Réserver</a><a href="#adresses">Nos adresses</a><a href="#infos">Infos</a>
   </nav>
   <a class="btn main" href="menu.html">Le menu</a>
 </header>
@@ -375,6 +389,18 @@ footer a{color:var(--gold);font-weight:700}
         <div class="full"><p class="rmiss" id="miss-event" aria-live="polite"></p><button class="btn wa" type="submit"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.5z"/></svg>Envoyer sur WhatsApp</button><p class="rnote" style="margin-top:12px">Tarifs et conditions confirmés par Karibu Self selon votre demande.</p></div>
       </form>
     </div>
+  </div>
+</section>
+
+<!-- ADRESSES -->
+<section class="adr" id="adresses">
+  <div class="wrap rv">
+    <p class="eyebrow">Nos adresses</p>
+    <h2>Deux adresses, deux ambiances</h2>
+    <p class="lead">Chez Karibu, choisissez l'adresse qui vous correspond : le buffet à volonté au Self, ou l'ambiance lounge bar au Bzv.</p>
+    <div class="cards"><article class="card"><div class="ph" style="background-image:url(autre-bzv.webp)" role="img" aria-label="Karibu Bzv"><span class="badge other">Notre autre adresse</span></div>
+      <div class="cb"><span class="tg">Lounge bar · Soirées live</span><h3>Karibu Bzv</h3><p>Plus d'ambiance : cocktails, karaoké le jeudi, soirées live et cuisine généreuse à la carte.</p><div class="addr">📍 1928 rue Nko, Maya Maya, Brazzaville</div><div class="act"><a class="btn main" href="https://bowbosh22.github.io/Karibu-bzv/">Découvrir Karibu Bzv</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=-4.2580317,15.25762" target="_blank" rel="noopener">Itinéraire</a></div></div></article><article class="card here"><div class="ph" style="background-image:url(autre-self.webp)" role="img" aria-label="Karibu Self"><span class="badge">Vous êtes ici</span></div>
+      <div class="cb"><span class="tg">Buffet à volonté · Self-service</span><h3>Karibu Self</h3><p>Servez-vous à volonté au buffet, dans une ambiance simple et conviviale. Cuisine africaine, ouvert 24h/24.</p><div class="addr">📍 92 Av. de l'Indépendance, Brazzaville</div><div class="act"><span class="note">Vous consultez le site de cette adresse.</span></div></div></article></div>
   </div>
 </section>
 
