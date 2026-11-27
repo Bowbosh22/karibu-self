@@ -250,11 +250,6 @@ footer a{color:var(--gold);font-weight:700}
 .adr .act{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:10px}.adr .act .note{font-size:.8rem;color:var(--mute);padding:12px 0}
 @media(min-width:820px){.adr .cards{grid-template-columns:1fr 1fr;gap:28px}}
 .buffet{margin-top:26px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;padding:18px 22px;border-radius:var(--r);border:1px solid rgba(224,171,74,.5);background:rgba(224,171,74,.08);max-width:640px}.buffet small{font-size:.66rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);flex-basis:100%}.buffet b{font-family:"Passion One",sans-serif;font-weight:400;font-size:2.2rem;line-height:1;color:var(--cream)}.buffet span{color:var(--mute);font-size:.95rem}
-/*AVIS*/.avis{background:var(--ink)}.avis .box{margin-top:30px;border:1px solid rgba(224,171,74,.35);border-radius:var(--r);background:rgba(255,255,255,.035);padding:22px 18px;max-width:760px}
-.stars{display:flex;gap:6px}.stars button{background:none;border:0;padding:2px;cursor:pointer;line-height:0}.stars svg{width:38px;height:38px;fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linejoin:round;transition:fill .15s}.stars button.on svg{fill:var(--gold)}
-.avis .rform{grid-template-columns:1fr}.avis .gline{display:flex;align-items:center;gap:12px;margin:24px 0 4px;color:var(--mute);font-size:.8rem}.avis .gline::before,.avis .gline::after{content:"";flex:1;height:1px;background:rgba(251,243,230,.18)}
-.avis .cats{display:grid;gap:12px;margin-top:2px}.avis .cat{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border:1px solid rgba(251,243,230,.18);border-radius:12px;background:rgba(18,13,9,.45)}.avis .cat span{font-weight:700;font-size:.92rem}.avis .cat .stars{gap:2px}.avis .cat .stars svg{width:26px;height:26px}
-.avis .gbtn{width:100%;margin-top:12px}@media(min-width:640px){.avis .box{padding:30px 28px}}
 </style>
 </head>
 <body>
@@ -413,25 +408,6 @@ footer a{color:var(--gold);font-weight:700}
   </div>
 </section>
 
-<!-- AVIS -->
-<section class="avis" id="avis">
-  <div class="wrap rv">
-    <p class="eyebrow">Votre avis</p>
-    <h2>Dites-nous ce que vous en pensez</h2>
-    <p class="lead">Pas de compte Google ? Écrivez votre avis ici : il nous arrive sur WhatsApp. Notez chaque point, c'est rapide.</p>
-    <div class="box">
-      <form class="rform" id="form-avis" novalidate>
-        <div class="f"><label>Votre note par catégorie</label><div class="cats"><div class="cat"><span>Cuisine</span><div class="stars" role="radiogroup" aria-label="Cuisine, note sur 5"><button type="button" class="" aria-label="1 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="2 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="3 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="4 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="5 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button></div></div><div class="cat"><span>Service</span><div class="stars" role="radiogroup" aria-label="Service, note sur 5"><button type="button" class="" aria-label="1 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="2 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="3 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="4 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="5 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button></div></div><div class="cat"><span>Ambiance</span><div class="stars" role="radiogroup" aria-label="Ambiance, note sur 5"><button type="button" class="" aria-label="1 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="2 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="3 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="4 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="5 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button></div></div><div class="cat"><span>Propreté</span><div class="stars" role="radiogroup" aria-label="Propreté, note sur 5"><button type="button" class="" aria-label="1 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="2 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="3 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="4 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button><button type="button" class="" aria-label="5 étoiles"><svg viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7z"/></svg></button></div></div></div></div>
-        <div class="f"><label for="a-nom">Nom ou prénom</label><input type="text" id="a-nom" placeholder="Votre prénom"></div>
-        <div class="f"><label for="a-txt">Votre avis <small>(facultatif)</small></label><textarea id="a-txt" placeholder="Un plat, un moment, un conseil…"></textarea></div>
-        <div><p class="rmiss" id="miss-avis" aria-live="polite"></p><button class="btn wa" type="submit"><svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.5z"/></svg>Envoyer mon avis sur WhatsApp</button></div>
-      </form>
-      <p class="gline">ou</p>
-      <a class="btn line gbtn" href="https://search.google.com/local/writereview?placeid=ChIJHboDjn4zahoR8YmHmmFkgmI" target="_blank" rel="noopener">J'ai un compte Google : laisser un avis sur Google</a>
-    </div>
-  </div>
-</section>
-
 <!-- INFOS -->
 <section class="info" id="infos">
   <div class="wrap rv">
@@ -515,30 +491,6 @@ document.querySelectorAll(".rv").forEach(el => io ? io.observe(el) : el.classLis
     if($("e-tel").value.trim())L.push("• Téléphone : "+$("e-tel").value.trim());
     if($("e-note").value.trim())L.push("• Demande : "+$("e-note").value.trim());
     L.push("","Pouvez-vous me donner les disponibilités et les tarifs ?");send(L)});
-})();
-</script>
-<script>
-(function(){
-  var NAME="Karibu Self",WA="242068201220",f=document.getElementById("form-avis"),miss=document.getElementById("miss-avis");
-  if(!f)return;
-  [].forEach.call(f.querySelectorAll(".cat"),function(row){
-    var bs=row.querySelectorAll("button");
-    [].forEach.call(bs,function(b,i){b.addEventListener("click",function(){
-      row.setAttribute("data-note",i+1);
-      [].forEach.call(bs,function(x,j){x.classList.toggle("on",j<=i);x.setAttribute("aria-pressed",j===i?"true":"false")});
-    })});
-  });
-  f.addEventListener("submit",function(e){e.preventDefault();
-    var L=["Bonjour "+NAME+", je laisse mon avis.",""],rows=f.querySelectorAll(".cat"),lack=[];
-    [].forEach.call(rows,function(r){var n=r.getAttribute("data-note"),t=r.querySelector("span").textContent;if(!n)lack.push(t.toLowerCase());else L.push("• "+t+" : "+n+"/5")});
-    var nom=document.getElementById("a-nom").value.trim(),txt=document.getElementById("a-txt").value.trim();
-    if(lack.length){miss.textContent="Merci de noter : "+lack.join(", ")+".";return}
-    if(!nom){miss.textContent="Merci d'indiquer votre prénom.";document.getElementById("a-nom").focus();return}
-    miss.textContent="";
-    if(txt){L.push("","• Avis : "+txt)}
-    L.push("","— "+nom);
-    window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(L.join("\n")),"_blank","noopener");
-  });
 })();
 </script>
 </body>
